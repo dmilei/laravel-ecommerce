@@ -3,9 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductsController extends Controller
 {
+    /**
+    * using auth middleware
+    *
+    *
+    */
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +26,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        return view('products.index')->with('products', Product::paginate(10));
     }
 
     /**
@@ -23,7 +36,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -32,9 +45,22 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+
+      $product = new Product;
+      $image = $request->image->store('posts');
+
+      $product->create([
+        'name' => $request->name,
+        'slug' => str_slug($request->name),
+        'price' => $request->price,
+        'image' => $image,
+        'description' => $request->description,
+      ]);
+
+      session()->flash('success', 'Product posted');
+      return redirect()->route('products.index');
     }
 
     /**
@@ -54,9 +80,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('products.edit')->with('product', $product);
     }
 
     /**
@@ -66,9 +92,31 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        /*
+        if($request->image){
+          $image = $request->image->store('posts');
+          $product->image = $image;
+        }
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+        */
+
+        $data = $request->only(['name', 'price', 'description']);
+        if($request->image){
+          $data['image'] = $request->image->store('posts');
+          $product->deleteImage();
+        }
+
+
+        $product->update($data);
+
+        session()->flash('success', 'Product updated');
+        return redirect()->back();
     }
 
     /**
@@ -77,8 +125,15 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        if(file_exists($product->image)){
+          unline($product->image);
+        }
+
+        $product->delete();
+
+        session()->flash('success', 'Product deleted');
+        return redirect()->route('products.index');
     }
 }
