@@ -4,6 +4,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            @if($errors->any())
+            <div class="alert alert-danger">
+              <ul class="list-group">
+              @foreach ($errors->all() as $error)
+                <li class="list-group-item">{{$error}}</li>
+              @endforeach
+              </ul>
+            </div>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-heading">
                   <h2>Create Product</h2>
