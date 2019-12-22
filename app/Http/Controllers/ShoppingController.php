@@ -20,6 +20,8 @@ class ShoppingController extends Controller
 
       Cart::associate($cartItem->rowId, 'App\Product');
 
+      session()->flash('success', 'Product added to the cart.');
+
       return redirect()->back();
     }
 
@@ -33,6 +35,8 @@ class ShoppingController extends Controller
         'price' => $product->price
       ]);
 
+      session()->flash('success', 'Product added to the cart.');
+
       Cart::associate($cartItem->rowId, 'App\Product');
 
       return redirect()->back();
@@ -42,12 +46,16 @@ class ShoppingController extends Controller
     {
       Cart::remove($id);
 
+      session()->flash('success', 'Product deleted from cart.');
+
       return redirect()->back();
     }
 
     public function incrementCartItem($id, $qty)
     {
       Cart::update($id, $qty+1);
+
+      session()->flash('success', 'One item added to the cart.');
 
       return redirect()->back();
     }
@@ -56,6 +64,8 @@ class ShoppingController extends Controller
     {
       Cart::update($id, $qty-1);
 
+      session()->flash('success', 'One item deleted from cart.');
+
       return redirect()->back();
     }
 
@@ -63,4 +73,5 @@ class ShoppingController extends Controller
     {
       return view('cart');
     }
+
 }

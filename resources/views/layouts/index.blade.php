@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/swiper.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/primary-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/magnific-popup.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <!--Styles for RTL-->
 
     <!--<link rel="stylesheet" type="text/css" href="css/rtl.css">-->
@@ -92,9 +92,14 @@
 <script src="{{ asset('app/js/velocity.min.js') }}"></script>
 <script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!-- ...end JS Script -->
 
+<script>
+  @if(session()->has('success'))
+    toastr.success('{{session()->get("success")}}');
+  @endif
+</script>
 
 </body>
 

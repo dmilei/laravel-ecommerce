@@ -21,6 +21,10 @@ Route::get('/cart/rapid/add{id}', 'ShoppingController@rapidAdd')->name('cart.rap
 
 Route::get('/cart', 'ShoppingController@cart')->name('cart');
 
+Route::get('/cart/checkout', 'CheckoutController@index')->name('cart.checkout');
+
+Route::post('/cart/checkout', 'CheckoutController@pay')->name('cart.checkout');
+
 Route::get('/cart/delete/{id}', 'ShoppingController@deleteCartItem')->name('cart.delete');
 
 Route::get('/cart/increment/{id}/{qty}', 'ShoppingController@incrementCartItem')->name('cart.increment');
