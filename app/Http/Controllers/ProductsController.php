@@ -94,17 +94,6 @@ class ProductsController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        /*
-        if($request->image){
-          $image = $request->image->store('posts');
-          $product->image = $image;
-        }
-
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->save();
-        */
 
         $data = $request->only(['name', 'price', 'description']);
         if($request->image){

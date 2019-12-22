@@ -17,6 +17,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <style>
       .btn-info, .badge-info{color: white;}
     </style>
@@ -102,6 +103,7 @@
                     <ul class="list-group">
                       <li class="list-group-item"><a href="{{ route('products.index') }}">See all products</a></li>
                       <li class="list-group-item"><a href="{{ route('products.create') }}">Create a product</a></li>
+                      <li class="list-group-item"><a href="{{ route('orders.index') }}">List Orders</a></li>
                     </ul>
                   </div>
                 </div>

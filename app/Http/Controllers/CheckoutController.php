@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Mail;
 use Cart;
+use App\Order;
 use Stripe\Stripe;
 use Stripe\Charge;
 use App\Mail\PurchaseSuccessful;
@@ -33,6 +34,14 @@ class CheckoutController extends Controller
       ]);
 
       session()->flash('success', 'Purchase successful. Please check out our email confirmation.');
+
+      $order = new Order;
+
+      $order->create([
+        'email' => request()->stripeEmail,
+        'status' => 'Pending',
+        'cart_content' => Cart::content(),
+      ]);
 
       Mail::to(request()->stripeEmail)->send(new PurchaseSuccessful());
 
