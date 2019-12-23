@@ -12,6 +12,6 @@ class Order extends Model
    * @var array
    */
   protected $fillable = [
-      'email', 'status', 'cart_content'
+      'email', 'status', 'order_total', 'cart_content'
   ];
 }

@@ -40,6 +40,7 @@ class CheckoutController extends Controller
       $order->create([
         'email' => request()->stripeEmail,
         'status' => 'Pending',
+        'order_total' => intval(Cart::total()),
         'cart_content' => Cart::content(),
       ]);
 
