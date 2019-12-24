@@ -37,9 +37,11 @@
     <div class="container">
 
         <div class="header-content-wrapper">
-
+            <a href="/">
+              <img src="{{asset('app/img/logo.png') }}" alt="main-logo" style="width: 15%;">
+            </a>
             <ul class="nav-add">
-                <li class="cart">
+                <li class="cart" id="cart-container">
 
                     <a href="#" class="js-cart-animate">
                         <i class="seoicon-basket"></i>
@@ -81,8 +83,7 @@
 </footer>
 
 
-
-<script src="{{ asset('app/js/jquery-2.1.4.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="{{ asset('app/js/crum-mega-menu.js') }}"></script>
 <script src="{{ asset('app/js/swiper.jquery.min.js') }}"></script>
 <script src="{{ asset('app/js/theme-plugins.js') }}"></script>
@@ -93,6 +94,7 @@
 <script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('js/front.js') }}"></script>
 <!-- ...end JS Script -->
 
 <script>

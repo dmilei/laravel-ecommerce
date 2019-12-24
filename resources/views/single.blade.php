@@ -39,7 +39,7 @@
                     <h3 class="product-details-info-title">{{$product->name}}</h3>
                     <p class="product-details-info-text">{{$product->description}}</p>
 
-                    <form action="{{ route('cart.add') }}" method="post">
+                    <form action="{{ route('ajax.add') }}" method="post">
                       @csrf
                       <div class="quantity">
                           <a href="#" class="quantity-minus quantity-minus-d">-</a>
@@ -49,7 +49,7 @@
 
                       <input type="hidden" name="pdt_id" value="{{ $product->id }}">
 
-                      <button class="btn btn-medium btn--primary" type="submit">
+                      <button class="btn btn-medium btn--primary btn-add-to-cart" type="submit">
                           <span class="text">Add to Cart</span>
                           <i class="seoicon-commerce"></i>
                           <span class="semicircle"></span>

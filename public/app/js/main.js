@@ -605,6 +605,7 @@ var CRUMINA = {};
 
     // Show dropdown cart on icon click.
     jQuery(".js-cart-animate").on('click', function (event) {
+        event.preventDefault();
         event.stopPropagation();
         $cartPopap.toggleClass('visible');
         $cartPopap.fadeToggle(200);

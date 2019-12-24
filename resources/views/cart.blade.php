@@ -30,7 +30,7 @@
                             @foreach(Cart::content() as $product)
                             <tr class="cart_item">
                                 <td class="product-remove">
-                                    <a href="{{ route('cart.delete', $product->rowId) }}" class="product-del remove" title="Remove this item">
+                                    <a href="{{ route('ajax.delete', $product->rowId) }}" class="product-del remove" title="Remove this item">
                                         <i class="seoicon-delete-bold"></i>
                                     </a>
                                 </td>
@@ -54,9 +54,9 @@
                                 <td class="product-quantity">
 
                                     <div class="quantity">
-                                        <a href="{{ route('cart.decrement', [$product->rowId, $product->qty]) }}" class="quantity-minus">-</a>
+                                        <a href="{{ route('ajax.decrement', [$product->rowId, $product->qty]) }}" class="quantity-minus">-</a>
                                         <input title="Qty" class="email input-text qty text" type="text" value="{{ $product->qty }}" readonly>
-                                        <a href="{{ route('cart.increment', [$product->rowId, $product->qty]) }}" class="quantity-plus">+</a>
+                                        <a href="{{ route('ajax.increment', [$product->rowId, $product->qty]) }}" class="quantity-plus">+</a>
                                     </div>
 
                                 </td>
