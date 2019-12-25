@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Products</div>
+                <div class="panel-heading"><h2>Products</h2></div>
 
                 <div class="panel-body">
                     <table class="table">
@@ -27,7 +27,7 @@
                               @foreach($products as $product)
                                     <tr>
                                           <td>{{ $product->name }}</td>
-                                          <td>{{ $product->price }}</td>
+                                          <td>${{ $product->price }}</td>
                                           <td>
                                                 <a href="{{ route('products.edit', $product->slug) }}" class="btn btn-success btn-xs">Edit</a>
                                           </td>
@@ -43,7 +43,7 @@
                         </tbody>
                     </table>
                     <div class="pagination-container">
-                      {{ $products->links() }}
+                      {{ $products->links('pagination.default') }}
                     </div>
                 </div>
             </div>

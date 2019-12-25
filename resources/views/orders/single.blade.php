@@ -109,13 +109,13 @@
 
                     <form action="{{ route('orders.update', $order->id) }}" method="post">
                       {{ csrf_field() }}
-                      <div class="form-group">
+                      <div class="form-group order-select">
                         <div class="row">
                           <div class="col-2">
                             <label for="name">Status:</label>
                           </div>
                           <div class="col-10">
-                            <select name="status" style="width: 100%;">
+                            <select name="status" style="width: 100%;" class="form-control form-control-sm">
                               <option value="Pending"
                               @if($order->status=="Pending")
                               selected

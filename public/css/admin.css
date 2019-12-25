@@ -1,4 +1,6 @@
-
-.badge-status{font-size: 15px;margin-top: 10%;}
+.panel.panel-default {margin-top: 50px;}
+.panel-heading {margin-bottom: 40px;}
 .cart-content-header{text-align: center; margin-top: 30px; margin-bottom: 30px;}
 .cart-sum-row{background-color: #4cc2c0; color: #fff;}
+.order-select {margin-top: 30px; margin-bottom: 30px;}
+.pagination-container{margin-top: 30px; text-align: center;}
