@@ -16,6 +16,7 @@
     <link rel="stylesheet"  href="{{ asset('admin/libs/css/style.css') }}">
     <link rel="stylesheet"  href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet"  href="{{ asset('admin/vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     @yield('css')
 </head>
 
@@ -96,8 +97,8 @@
                                     <h5 class="mb-0 text-white nav-user-name">{{ auth()->user()->email }}</h5>
                                 </div>
 
-                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="{{ route('userdata.index') }}"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="{{ route('userdata.edit') }}"><i class="fas fa-cog mr-2"></i>Edit Contact</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -213,6 +214,16 @@
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('admin/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('admin/libs/js/main-js.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+      @if(session()->has('success'))
+        toastr.success('{{session()->get("success")}}');
+      @endif
+      @if(session()->has('error'))
+        toastr.error('{{session()->get("error")}}');
+      @endif
+    </script>
 </body>
 
 </html>

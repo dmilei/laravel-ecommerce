@@ -38,7 +38,8 @@ class CheckoutController extends Controller
       $order = new Order;
 
       $order->create([
-        'email' => request()->stripeEmail,
+        'user_id' => (auth()->user()) ? auth()->user()->id : 0,
+        'email' => (auth()->user()) ? auth()->user()->email : request()->stripeEmail,
         'status' => 'Pending',
         'order_total' => intval(Cart::total()),
         'cart_content' => Cart::content(),

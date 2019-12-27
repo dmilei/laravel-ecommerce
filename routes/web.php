@@ -45,3 +45,11 @@ Route::post('/cart/checkout', 'CheckoutController@pay')->name('cart.checkout');
 Route::get('/orders/list', 'OrdersController@index')->name('orders.index');
 Route::get('/orders/{id}', 'OrdersController@single')->name('orders.single');
 Route::post('/orders/update/{id}', 'OrdersController@update')->name('orders.update');
+
+//Managing UserData
+
+Route::get('/account', 'UserDataController@index')->name('userdata.index');
+Route::get('/account/create/data', 'UserDataController@create')->name('userdata.create');
+Route::post('/account/store/data', 'UserDataController@store')->name('userdata.store');
+Route::get('/account/edit', 'UserDataController@edit')->name('userdata.edit');
+Route::post('/account/update/{id}', 'UserDataController@update')->name('userdata.update');
